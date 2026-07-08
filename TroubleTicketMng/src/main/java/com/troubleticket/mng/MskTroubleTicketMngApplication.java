@@ -29,7 +29,7 @@ public class MskTroubleTicketMngApplication {
             // Controlla se l'admin esiste già, altrimenti lo crea con la nuova struttura
             if (!userRepository.existsById("admin")) {
                 
-                String encryptedPassword = passwordEncoder.encode("admin123");
+                String encryptedPassword = passwordEncoder.encode("admin123!");
 
                 User admin = User.builder()
                         .username("admin")
