@@ -1,0 +1,53 @@
+<div class="login-page">
+  <div class="login-frame">
+    <div class="profile-photo">
+      <div class="photo-inner-solid">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="35" r="18" stroke="white" stroke-width="4.5"/>
+          <path d="M15 82C15 68 30 58 50 58C70 58 85 68 85 82" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="login-box">
+      <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate autocomplete="off">
+        
+        <div class="input-row">
+          <div class="icon-box">
+             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+             </svg>
+          </div>
+          <input type="text" name="username" [(ngModel)]="form.username" required placeholder="Username" autocomplete="off">
+        </div>
+
+        <div class="input-row">
+          <div class="icon-box">
+             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+             </svg>
+          </div>
+          <input type="password" name="password" [(ngModel)]="form.password" required placeholder="Password" autocomplete="new-password">
+        </div>
+
+        <div *ngIf="isLoginFailed" class="error-msg">
+          {{ errorMessage }}
+        </div>
+
+        <button type="submit" class="btn-login">LOGIN</button>
+
+        <div class="captcha-container">
+          <div id="recaptcha-container"></div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="footer-links-outside">
+      <a routerLink="/privacy-policy">Cookie and Privacy Policy</a>
+    </div>
+
+  </div>
+</div>

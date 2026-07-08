@@ -1,0 +1,52 @@
+<div class="home-wrapper">
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="logo-icon">📋</span>
+      <h1>MSK Ticket Manager</h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#" class="active">Dashboard</a></li>
+      <li><a href="#">Archivio</a></li>
+      <li><a href="#">Report</a></li>
+      <li><a href="#">Supporto</a></li>
+    </ul>
+
+    <div class="user-section">
+      <div class="user-pill">
+        <span class="username">{{ currentUser?.username }}</span>
+        <span class="user-site">{{ currentUser?.site }}</span>
+      </div>
+      <button (click)="logout()" class="btn-logout" title="Disconnetti">
+        <span class="logout-icon">⏻</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <header class="welcome-header">
+      <h2>Bentornato, {{ currentUser?.username }}!</h2>
+      <p>Gestisci le tue segnalazioni per il sito di <strong>{{ currentUser?.site }}</strong></p>
+    </header>
+
+    <div class="dashboard-grid">
+      <div class="action-card">
+        <div class="card-icon">📂</div>
+        <div class="card-body">
+          <h3>I miei Ticket</h3>
+          <p>Visualizza e monitora lo stato delle tue segnalazioni attive.</p>
+          <button class="btn-outline">Visualizza elenco</button>
+        </div>
+      </div>
+
+      <div class="action-card highlight">
+        <div class="card-icon">➕</div>
+        <div class="card-body">
+          <h3>Apri Nuovo Ticket</h3>
+          <p>Segnala un guasto o un'anomalia tecnica al team di supporto.</p>
+          <button class="btn-primary">Inizia ora</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
