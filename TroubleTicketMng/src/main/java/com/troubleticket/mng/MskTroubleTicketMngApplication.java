@@ -37,7 +37,7 @@ public class MskTroubleTicketMngApplication {
                         .name("Amministratore di Sistema") // Nuovo campo
                         .site("Milano")
                         .role("ADMIN") // Nuovo campo
-                        .email("admin@mng.com")
+                        .email("admin@mng.it")
                         .flag("pinco.png")
                         .expirationDate(java.time.LocalDate.now().plusYears(1)) // Nuovo campo (Scade tra 1 anno)
                         .build();
