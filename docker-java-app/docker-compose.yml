@@ -1,0 +1,42 @@
+services:
+  # 1. Database MySQL
+  db:
+    image: mysql:8.0
+    container_name: msk-mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "::csvPaid--.."
+      MYSQL_DATABASE: "vlfmskdbtest"
+    ports:
+      - "3307:3306"
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p::csvPaid--.."]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # 2. Backend Java Spring Boot
+  app:
+    build: .
+    container_name: msk-java-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/vlfmskdbtest?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "::csvPaid--.."
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+      SPRING_JPA_SHOW_SQL: "true"
+      APP_JWT_SECRET: "tK6bW9vXzYq8N2pZ5mR4vW7xZ1aQ3bC5eF7gG9hI2jK4lM6nO8pQ0rS2tU4vW6xZ"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # 3. Frontend Angular
+  frontend:
+    build: C:\Users\DOMINIF\Desktop\Progetti\TroubleTicketMngRepo\TroubleTicketMngUI
+    container_name: msk-angular-app
+    ports:
+      - "4200:80"
+    depends_on:
+      - app
